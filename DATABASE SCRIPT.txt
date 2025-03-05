@@ -1,0 +1,35 @@
+DATABASE SCRIPT
+create procedure spCrud
+@action varchar(50),
+@id int,
+@name varchar(50),
+@gender char(1),
+@salary int,
+@city varchar(50)
+as
+begin
+if @action = 'insert'
+insert into emp_table values(@name,@gender,@salary,@city)
+if @action = 'update'
+update  emp_table set empname= @name,gender=@gender,salary=@salary,city=@city where empid=@id
+if @action='delete'
+delete from emp_table where empid=@id
+end
+
+Employee Table
+CREATE TABLE [dbo].[emp_table](
+	[empid] [int] IDENTITY(1,1) NOT NULL,
+	[empname] [varchar](50) NULL,
+	[gender] [varchar](20) NULL,
+	[salary] [int] NULL,
+	[city] [varchar](50) NULL,
+)
+empid   empname gender  salary  city
+1	Nandha	Male	25000	Chennai
+2	Kumar	Male	15000	Chennai
+3	Rita	Female	28500	Chennai
+4	Mohammed	Male	29000	Mumbai
+5	Francis	Male	22000	Bangalore
+6	Tom	Male	25000	Banglaore
+7	Keerthi	Female	32000	Chennai
+9	Priya	F	28000	Mumbai
